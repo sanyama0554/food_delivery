@@ -6,6 +6,7 @@ import { ApolloFederationDriver, ApolloFederationDriverConfig } from '@nestjs/ap
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../../../prisma/prisma.service';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { PrismaService } from '../../../prisma/prisma.service';
       autoSchemaFile: {
         federation: 2,
       },
-    })
+    }),
+    EmailModule
   ], 
   controllers: [UsersController],
   providers: [UsersService, ConfigService, JwtService, PrismaService],
